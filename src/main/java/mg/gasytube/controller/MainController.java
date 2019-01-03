@@ -12,6 +12,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.RandomAccessFile;
+import java.sql.Date;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +27,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * @author HP
  */
 @Controller
-@RequestMapping("/")
+@RequestMapping("/admin/")
 public class MainController { 
    @RequestMapping(value="/",method = RequestMethod.GET)
    public ModelAndView printHello(ModelMap model) {
@@ -76,7 +77,7 @@ public class MainController {
                 System.out.println("Artist: " + id3v2Tag.getArtist());
                 System.out.println("Title: " + id3v2Tag.getTitle());
                 System.out.println("Album: " + id3v2Tag.getAlbum());
-                System.out.println("Year: " + id3v2Tag.getYear());
+                System.out.println("Year: " + Date.valueOf(id3v2Tag.getDate()));
                 System.out.println("Genre: " + id3v2Tag.getGenre() + " (" + id3v2Tag.getGenreDescription() + ")");
                 System.out.println("Comment: " + id3v2Tag.getComment());
                 System.out.println("Composer: " + id3v2Tag.getComposer());
