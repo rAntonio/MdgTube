@@ -38,7 +38,7 @@
                                                 <hr class="right">
                                             </div>
                                         </div>
-                                        <form action="${pageContext.request.contextPath}/authentification" method="POST">
+                                        <form action="${pageContext.request.contextPath}/admin/authentification" method="POST">
                                             <input class="form-control" type="text" placeholder="E-mail address" name="username">
                                             <input class="form-control" type="password" placeholder="Password" name="password">
                                             <div class="action">
