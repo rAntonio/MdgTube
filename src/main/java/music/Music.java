@@ -24,9 +24,10 @@ public class Music {
         HibernateDAO h = new HibernateDAO();
        Administrateur a = new Administrateur();
        a.setMail("hajatianarabekoto@gmail.com");
-       a.setPassword("Tony");
-       a.setUsername("Tony");
+       a.setPassword("root");
+       a.setUsername("root");
        h.create(a);
+       //System.out.println(h.findAll(a).size());
     }
     
 }

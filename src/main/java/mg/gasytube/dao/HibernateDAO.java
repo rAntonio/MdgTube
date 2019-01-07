@@ -10,13 +10,19 @@ import Config.HibernateUtil;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author MIORA
  */
+@Repository("hibernateDao")
 public class HibernateDAO implements InterfaceDAO{
 
+    public HibernateDAO(){
+        
+    }
+    
     @Override
     public void update(BaseModele arg) {
         Session s = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -66,8 +72,8 @@ public class HibernateDAO implements InterfaceDAO{
             s.beginTransaction();
             result = s.createCriteria(BaseModele.class).list();
             s.getTransaction().commit();
-        }catch(Exception e)
-        {
+        }catch(Exception e){
+            s.getTransaction().rollback();
             throw e;
         }
         return result;

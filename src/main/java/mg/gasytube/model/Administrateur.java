@@ -5,8 +5,12 @@
  */
 package mg.gasytube.model;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -16,6 +20,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name ="administrateur")
 public class Administrateur extends BaseModele{
+    @Id   
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "idroot",unique=true,nullable = false)
+    Long id;
+    
     @Column
     String mail;
     @Column
@@ -52,5 +62,9 @@ public class Administrateur extends BaseModele{
 
     public String getUsername() {
         return username;
+    }
+    
+    public boolean isValide(){
+        return (id!=null && username!=null && password!=null && mail !=null);
     }
 }

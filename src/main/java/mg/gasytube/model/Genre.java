@@ -5,8 +5,12 @@
  */
 package mg.gasytube.model;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -16,8 +20,14 @@ import javax.persistence.Table;
 @Entity
 @Table (name="genre")
 public class Genre extends BaseModele {
+    @Id   
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "refgenre",unique=true,nullable = false)
+    private Long id;
     @Column
     String designation;
+    
     public Genre(){}
     public Genre(Long id,String designation) {
         this.id = id;
@@ -31,4 +41,14 @@ public class Genre extends BaseModele {
     public String getDesignation() {
         return designation;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    
 }

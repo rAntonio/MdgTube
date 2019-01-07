@@ -6,8 +6,12 @@
 package mg.gasytube.model;
 
 import java.sql.Date;
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -15,8 +19,15 @@ import javax.persistence.Table;
  * @author MIORA
  */
 @Entity
-@Table("album")
+@Table(name="album")
 public class Album extends BaseModele{
+    
+    @Id   
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "refalbum",unique=true,nullable = false)
+    Long id;
+    
     @Column
     int refartiste;
     @Column
@@ -63,5 +74,13 @@ public class Album extends BaseModele{
 
     public String getImage() {
         return image;
+    }
+    
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

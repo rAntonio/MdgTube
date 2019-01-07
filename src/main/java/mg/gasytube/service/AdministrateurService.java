@@ -5,14 +5,28 @@
  */
 package mg.gasytube.service;
 
+import java.util.List;
+import mg.gasytube.dao.HibernateDAO;
 import mg.gasytube.model.Administrateur;
+import mg.gasytube.model.BaseModele;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author HP
  */
+@Service
 public class AdministrateurService {
-    public static Administrateur login(String username,String password){
-        return null;
+    @Autowired
+    HibernateDAO hibernateDAO;
+    
+    public Administrateur login(String username,String password){
+        List<BaseModele> list=hibernateDAO.findAll(new Administrateur(new Long(0),null,password,username));
+        if(list.isEmpty()){
+            return null;
+        }else{
+            return (Administrateur) list.get(0);
+        }
     }
 }

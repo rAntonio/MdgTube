@@ -5,8 +5,12 @@
  */
 package mg.gasytube.model;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -17,6 +21,11 @@ import javax.persistence.Table;
 @Table (name ="artiste")
 public class Artiste extends BaseModele{
     
+    @Id   
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "refartiste",unique=true,nullable = false)
+    Long id;
     
     @Column
     String designation;

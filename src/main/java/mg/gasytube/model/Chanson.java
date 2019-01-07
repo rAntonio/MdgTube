@@ -6,8 +6,12 @@
 package mg.gasytube.model;
 
 import java.sql.Date;
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -17,6 +21,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name="chanson")
 public class Chanson extends BaseModele{
+    
+    @Id   
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "refchanson",unique=true,nullable = false)
+    Long id;
+    
     @Column
     int refgenre;
     @Column
@@ -24,7 +35,7 @@ public class Chanson extends BaseModele{
     @Column
     String titre;
     @Column
-    Date dateSortie;
+    String dateSortie;
     @Column
     String comment;
     @Column
@@ -36,7 +47,7 @@ public class Chanson extends BaseModele{
     @Column
     String url;
 
-    public Chanson(Long id,int refgenre, int refalbum, String titre, Date dateSortie, String comment, String composer, String publisher, String copyright, String url) {
+    public Chanson(Long id,int refgenre, int refalbum, String titre, String dateSortie, String comment, String composer, String publisher, String copyright, String url) {
         this.id = id;
         this.refgenre = refgenre;
         this.refalbum = refalbum;
@@ -61,7 +72,7 @@ public class Chanson extends BaseModele{
         this.titre = titre;
     }
 
-    public void setDateSortie(Date dateSortie) {
+    public void setDateSortie(String dateSortie) {
         this.dateSortie = dateSortie;
     }
 
@@ -97,7 +108,7 @@ public class Chanson extends BaseModele{
         return titre;
     }
 
-    public Date getDateSortie() {
+    public String getDateSortie() {
         return dateSortie;
     }
 

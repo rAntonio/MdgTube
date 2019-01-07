@@ -8,14 +8,32 @@
     http://www.springframework.org/schema/mvc 
     http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd"
     xmlns:mvc="http://www.springframework.org/schema/mvc">
-    <mvc:annotation-driven/> 
-    <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/"  cache-period="31556926"/>
+   <mvc:annotation-driven/> 
+   <!--path ressource-->
+   <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/"  cache-period="31556926"/>
+   <!--path controller-->
    <context:component-scan base-package = "mg.gasytube.controller" />
+   
+   <!--path view ressource-->
    <bean class = "org.springframework.web.servlet.view.InternalResourceViewResolver">
       <property name = "prefix" value = "/WEB-INF/jsp/" />
       <property name = "suffix" value = ".jsp" />
    </bean>
    
+   <!--Service-->
+    <bean name="adminService" class="mg.gasytube.service.AdministrateurService" />
+    <bean name="songService" class="mg.gasytube.service.ChansonService" />
+    <bean name="genreService" class="mg.gasytube.service.GenreService" />
+    <bean name="artisteService" class="mg.gasytube.service.ArtisteService" />
+    <bean name="albumService" class="mg.gasytube.service.AlbumService" />
+    
+    <!--data access object-->
+    <bean name="hibernateDAO" class="mg.gasytube.dao.HibernateDAO" />
+    
+    <!--persistence-->
+    <bean name="admin" class="mg.gasytube.model.Administrateur" />
+    
+    <!--configuration des uploads-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		 <!-- setting maximum upload size -->
 		<property name="maxUploadSize" value="10000000" />
