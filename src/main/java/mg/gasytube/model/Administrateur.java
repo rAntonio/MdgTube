@@ -5,6 +5,7 @@
  */
 package mg.gasytube.model;
 
+import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,12 +20,26 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name ="administrateur")
-public class Administrateur extends BaseModele{
+public class Administrateur extends BaseModele implements java.io.Serializable{
+
+    /**
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
     @Id   
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idroot",unique=true,nullable = false)
-    Long id;
+    private Long id;
     
     @Column
     String mail;
@@ -65,6 +80,7 @@ public class Administrateur extends BaseModele{
     }
     
     public boolean isValide(){
-        return (id!=null && username!=null && password!=null && mail !=null);
+        return (getId()!=null && username!=null && password!=null && mail !=null);
     }
+    
 }

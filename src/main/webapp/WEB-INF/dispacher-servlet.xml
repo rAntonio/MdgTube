@@ -26,6 +26,11 @@
     <bean name="genreService" class="mg.gasytube.service.GenreService" />
     <bean name="artisteService" class="mg.gasytube.service.ArtisteService" />
     <bean name="albumService" class="mg.gasytube.service.AlbumService" />
+    <bean name="chansonService" class="mg.gasytube.service.ChansonService" />
+    
+    <!--DAO-->
+    <bean name="chanson" class="mg.gasytube.dao.ChansonDAO" />
+    <bean name="album" class="mg.gasytube.dao.AlbumDAO" />
     
     <!--data access object-->
     <bean name="hibernateDAO" class="mg.gasytube.dao.HibernateDAO" />

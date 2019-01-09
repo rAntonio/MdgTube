@@ -19,9 +19,24 @@ import javax.persistence.SequenceGenerator;
  */
 @MappedSuperclass
 public abstract class BaseModele {
-//    @Id   
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Basic(optional = false)
-//    @Column(name = "id",unique=true,nullable = false)
-//    protected Long id;
+
+    /**
+     * @return the id
+     */
+   
+   /* @Id   
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id",unique=true,nullable = false)
+    private Long id;*/
+    /* public Long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    /*public void setId(Long id) {
+        this.id = id;
+    }*/
 }

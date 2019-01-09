@@ -28,6 +28,6 @@ public class GenreService {
 
     Long add(String genreDescription) {
         hibernateDAO.create(new Genre(null,genreDescription));
-        return ((Genre)hibernateDAO.findAll(new Genre(null,genreDescription)).get(0)).getId();
+         return ((Genre)hibernateDAO.findAll(new Genre(null,genreDescription)).get(0)).getId();
     }
 }

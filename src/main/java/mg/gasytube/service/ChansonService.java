@@ -5,12 +5,20 @@
  */
 package mg.gasytube.service;
 
+import Config.HibernateUtil;
 import com.mpatric.mp3agic.ID3v1;
 import com.mpatric.mp3agic.ID3v2;
 import com.mpatric.mp3agic.Mp3File;
 import java.io.File;
+import java.util.List;
+import java.util.Vector;
+import javax.persistence.Query;
+import mg.gasytube.dao.ChansonDAO;
 import mg.gasytube.dao.HibernateDAO;
 import mg.gasytube.model.Chanson;
+import org.hibernate.Session;
+import org.hibernate.criterion.Example;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +40,19 @@ public class ChansonService {
     @Autowired
     AlbumService albumService;
     
+    @Autowired
+    ChansonDAO chanson;
+    
+    public List<Chanson> giveResult(String title,int limit,int offset)
+    {      
+        List<Chanson> reponse  =  chanson.findByTitle(title, limit, offset);
+        return reponse;
+    }
+    public Long giveNbLigne(String title)
+    {
+        Long reponse = chanson.getNombreLigne(title);
+        return reponse;
+    }
     public void insert(File mp3)throws Exception{
         Mp3File mp3file = new Mp3File(mp3.getAbsolutePath());
             if (mp3file.hasId3v2Tag()) {
@@ -68,6 +89,7 @@ public class ChansonService {
             }
           }
     }
+
 
 //System.out.println("Track: " + id3v2Tag.getTrack());
 //            System.out.println("Artist: " + id3v2Tag.getArtist());

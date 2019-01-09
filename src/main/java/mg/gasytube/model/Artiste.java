@@ -20,12 +20,12 @@ import javax.persistence.Table;
 @Entity
 @Table (name ="artiste")
 public class Artiste extends BaseModele{
-    
+ 
     @Id   
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "refartiste",unique=true,nullable = false)
-    Long id;
+    private Long id;
     
     @Column
     String designation;
@@ -53,4 +53,17 @@ public class Artiste extends BaseModele{
         this.image = image;
     }
     public Artiste(){}
+     /**
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

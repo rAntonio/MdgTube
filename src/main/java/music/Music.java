@@ -6,8 +6,15 @@
 package music;
 
 import java.sql.Date;
+import java.util.List;
+import mg.gasytube.dao.ArtisteDAO;
+import mg.gasytube.dao.ChansonDAO;
 import mg.gasytube.dao.HibernateDAO;
 import mg.gasytube.model.Administrateur;
+import mg.gasytube.model.Album;
+import mg.gasytube.model.Artiste;
+import mg.gasytube.model.Chanson;
+import mg.gasytube.service.ChansonService;
 ;
 
 /**
@@ -24,10 +31,9 @@ public class Music {
         HibernateDAO h = new HibernateDAO();
        Administrateur a = new Administrateur();
        a.setMail("hajatianarabekoto@gmail.com");
-       a.setPassword("root");
-       a.setUsername("root");
+       a.setPassword("Tony");
+       a.setUsername("Tony");
        h.create(a);
-       //System.out.println(h.findAll(a).size());
     }
     
 }

@@ -43,11 +43,11 @@ public class Genre extends BaseModele {
     }
 
     public Long getId() {
-        return id;
+        return getId();
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.setId(id);
     }
     
     
